@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <%- include('../sections/head'); %>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <main class="flex-shrink-0">
+        <div class="container">
+            <%- include('../sections/menu'); %>
+            <h1>Productos EJS</h1>
+            <div class="row mt-5">
+                <div class="col-2"></div>
+                <div class="col-8">
+                    <form action="/modificarProducto" method="post">
+                        <% producto.forEach((producto) => { %>
+                            <div class="card">
+                                <div class="card-header">
+                                    <h1>Modificar Producto</h1>
+                                </div>
+                                <div class="card-body">
+                                    <input type="text" class="form-control" readonly name="idProducto" id="idProducto" value="<%= producto.idProducto %>"/>
+                                    <br/>
+                                    <input type="text" class="form-control mb-2" name="nombreProducto" id="nombreProducto" value="<%= producto.nombreProducto %>" placeholder="Nombre del producto"/>
+                                    <br/>
+                                    <input type="text" class="form-control mb-2" name="marcaProducto" id="marcaProducto" value="<%= producto.marcaProducto %>" placeholder="Marca del producto"/>
+                                    <br/>
+                                    <input type="text" class="form-control mb-2" name="precioProducto" id="precioProducto" value="<%= producto.precioProducto %>" placeholder="Precio del producto"/>
+                                </div>
+                                <div class="card-footer">
+                                    <a class="btn btn-secondary" href="/listarProducto">Cancelar</a>
+                                    <button class="btn btn-primary" type="submit">Guardar Producto</button>
+                                </div>
+                            </div>
+                        <% }); %>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('../sections/footer'); %>
+</body>
+</html>
